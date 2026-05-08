@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kizzy Phone Engineer | Admin Pro</title>
+    <title>Kizzy Phone Engineer | Expert Repairs</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        body { background-color: #020617; color: white; font-family: sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .hidden-panel { display: none; }
     </style>
 </head>
-<body class="bg-slate-950 text-white font-sans">
+<body>
+    <section class="py-16 px-6 text-center">
+        <h1 class="text-5xl font-bold mb-4 text-blue-500">Kizzy Repairs</h1>
+        <p class="text-slate-400 mb-8">Fast, reliable phone engineering in 45 minutes.</p>
+        <a href="https://wa.me/2347088150693" class="bg-green-600 px-8 py-3 rounded-full font-bold">Chat on WhatsApp</a>
+    </section>
 
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <h1 class="text-2xl font-bold text-blue-400 uppercase tracking-tighter">Kizzy <span class="text-white">Engineer</span></h1>
-        <button onclick="toggleAdmin()" class="text-slate-800 hover:text-slate-600 text-xs">Admin Access</button>
-    </nav>
-
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center" data-aos="fade-up">Work Showcase</h2>
-        <div id="image-gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <p class="col-span-full text-center text-slate-500">Loading gallery...</p>
+    <section class="py-12 px-6 max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8 text-center uppercase tracking-widest">Recent Repairs</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <img src="images/work1.jpg" data-aos="zoom-in" class="rounded-xl glass w-full h-48 object-cover">
+            <img src="images/work2.jpg" data-aos="zoom-in" class="rounded-xl glass w-full h-48 object-cover">
+            <img src="images/work3.jpg" data-aos="zoom-in" class="rounded-xl glass w-full h-48 object-cover">
         </div>
     </section>
 
-    <div id="admin-panel" class="hidden-panel fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6">
-        <div class="glass p-8 rounded-3xl w-full max-w-md">
-            <div class="flex justify-between mb-6">
-                <h3 class="text-2xl font-bold">Admin Login</h3>
-                <button onclick="toggleAdmin()" class="text-red-400">Close</button>
-            </div>
-            
-            <div id="login-form">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>
                 <input type="email" id="email" placeholder="Email" class="w-full p-3 mb-4 rounded bg-slate-800 border border-slate-700">
                 <input type="password" id="password" placeholder="Password" class="w-full p-3 mb-4 rounded bg-slate-800 border border-slate-700">
                 <button onclick="login()" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Login</button>
