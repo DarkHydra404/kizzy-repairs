@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kizzy Phone Engineer | Expert Repairs</title>
+    <title>Kizzy Phone Engineer | Auto-Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -12,28 +12,52 @@
     </style>
 </head>
 <body>
+
     <section class="py-16 px-6 text-center">
         <h1 class="text-5xl font-bold mb-4 text-blue-500">Kizzy Repairs</h1>
-        <p class="text-slate-400 mb-8">Fast, reliable phone engineering in 45 minutes.</p>
+        <p class="text-slate-400 mb-8">Fast repairs. Professional service.</p>
         <a href="https://wa.me/2347088150693" class="bg-green-600 px-8 py-3 rounded-full font-bold">Chat on WhatsApp</a>
     </section>
 
     <section class="py-12 px-6 max-w-6xl mx-auto">
-        <h2 class="text-2xl font-bold mb-8 text-center uppercase tracking-widest">Recent Repairs</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <img src="images/work1.jpg" data-aos="zoom-in" class="rounded-xl glass w-full h-48 object-cover">
-            <img src="images/work2.jpg" data-aos="zoom-in" class="rounded-xl glass w-full h-48 object-cover">
-            <img src="images/work3.jpg" data-aos="zoom-in" class="rounded-xl glass w-full h-48 object-cover">
-        </div>
+        <h2 class="text-2xl font-bold mb-8 text-center uppercase tracking-widest text-slate-500">Work Showcase</h2>
+        <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            </div>
     </section>
+
+    <script>
+        const container = document.getElementById('gallery-container');
+        const maxImages = 50; // Set this to the maximum photos you might ever upload
+
+        async function loadImages() {
+            for (let i = 1; i <= maxImages; i++) {
+                const imgPath = `images/work${i}.jpg`;
+                
+                // We "test" if the image exists
+                const img = new Image();
+                img.src = imgPath;
+                
+                img.onload = function() {
+                    const div = document.createElement('div');
+                    div.className = "glass overflow-hidden rounded-xl h-48";
+                    div.innerHTML = `<img src="${imgPath}" class="w-full h-full object-cover hover:scale-110 transition duration-500">`;
+                    container.appendChild(div);
+                };
+
+                img.onerror = function() {
+                    // If the image doesn't exist (e.g. work10.jpg isn't uploaded yet), we just stop
+                    return;
+                };
+            }
+        }
+
+        loadImages();
+    </script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init();</script>
 </body>
 </html>
-                <input type="email" id="email" placeholder="Email" class="w-full p-3 mb-4 rounded bg-slate-800 border border-slate-700">
-                <input type="password" id="password" placeholder="Password" class="w-full p-3 mb-4 rounded bg-slate-800 border border-slate-700">
-                <button onclick="login()" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Login</button>
             </div>
 
             <div id="upload-controls" class="hidden">
