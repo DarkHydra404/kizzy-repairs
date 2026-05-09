@@ -3,37 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kizzy Phone Engineer | Auto-Gallery</title>
+    <title>KizzyTech Phone Engineering | Pro Repairs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #020617; color: white; font-family: sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        :root { --main-blue: #3b82f6; --main-green: #22c55e; }
+        body { background-color: #020617; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .tech-font { font-family: 'Orbitron', sans-serif; }
+        
+        /* Animation: Flickering Broken Screen Effect */
+        .broken-screen {
+            position: relative;
+            background: url('images/banner.jpg') center/cover;
+            height: 400px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .broken-screen::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 100% 3px;
+            animation: flicker 0.2s infinite;
+            opacity: 0.3;
+        }
+        @keyframes flicker {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 0.1; }
+        }
+
+        /* Animation: Charging Pulse */
+        .charging-icon {
+            animation: charge 1.5s ease-in-out infinite;
+        }
+        @keyframes charge {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--main-green)); }
+            50% { transform: scale(1.2); filter: drop-shadow(0 0 15px var(--main-green)); }
+        }
+
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <section class="py-16 px-6 text-center">
-        <h1 class="text-5xl font-bold mb-4 text-blue-500">Kizzy Repairs</h1>
-        <p class="text-slate-400 mb-8">Fast repairs. Professional service.</p>
-        <a href="https://wa.me/2347088150693" class="bg-green-600 px-8 py-3 rounded-full font-bold">Chat on WhatsApp</a>
-    </section>
+    <nav class="p-4 flex justify-between items-center max-w-7xl mx-auto">
+        <img src="images/logo.png" alt="KizzyTech Logo" class="h-16 hover:rotate-6 transition-transform">
+        <div class="hidden md:block tech-font text-sm text-blue-400">24/7 Emergency: 070 8815 0693</div>
+    </nav>
 
-    <section class="py-12 px-6 max-w-6xl mx-auto">
-        <h2 class="text-2xl font-bold mb-8 text-center uppercase tracking-widest text-slate-500">Work Showcase</h2>
-        <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <section class="px-6 py-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+            <h1 class="tech-font text-5xl md:text-7xl font-bold leading-tight">
+                You break it, <br><span class="text-blue-500 underline">We fix it.</span>
+            </h1>
+            <p class="mt-6 text-slate-400 text-lg leading-relaxed">
+                Why buy a new phone when <span class="text-white font-bold">KizzyTech</span> can make your broken device look brand new in 45 minutes? Expert engineering for the modern world.
+            </p>
+            <div class="mt-8 flex gap-4">
+                <a href="https://wa.me/2347088150693" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-bold transition-all transform hover:-translate-y-1">Book a Repair</a>
             </div>
+        </div>
+        
+        <div data-aos="zoom-in" class="broken-screen shadow-2xl border border-blue-500/20 flex items-end p-8">
+            <div class="glass p-4 rounded-xl w-full">
+                <p class="tech-font text-xs uppercase tracking-widest text-blue-400">Live Status</p>
+                <p class="text-xl font-bold italic">System Restored by KizzyTech</p>
+            </div>
+        </div>
     </section>
 
-    <script>
-        const container = document.getElementById('gallery-container');
-        const maxImages = 50; // Set this to the maximum photos you might ever upload
+    <section class="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up">
+            <div class="text-5xl mb-4">⚡</div>
+            <h3 class="tech-font text-xl mb-2">Ultra-Fast</h3>
+            <p class="text-slate-400">Most repairs completed in under 45 minutes while you wait.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl text-center border-green-500/30" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-5xl mb-4 charging-icon">🔋</div>
+            <h3 class="tech-font text-xl mb-2 text-green-400">Expert Care</h3>
+            <p class="text-slate-400">From micro-soldering to screen swaps, we handle it all with precision.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-5xl mb-4">🛠️</div>
+            <h3 class="tech-font text-xl mb-2">Guaranteed</h3>
+            <p class="text-slate-400">We use premium parts that last. If it's not perfect, we haven't finished.</p>
+        </div>
+    </section>
 
-        async function loadImages() {
-            for (let i = 1; i <= maxImages; i++) {
-                const imgPath = `images/work${i}.jpg`;
-                
-                // We "test" if the image exists
+    <section class="py-20 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="tech-font text-3xl mb-12 text-center">Engineering <span class="text-blue-500">Masterpieces</span></h2>
+            <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                </div>
+        </div>
+    </section>
+
+    <footer class="p-10 text-center border-t border-slate-800">
+        <p class="text-slate-500 text-sm italic">"The technician you can trust with your digital life."</p>
+        <p class="mt-4 tech-font text-xs tracking-tighter">© 2026 KizzyTech Phone Engineering</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        
+        // Auto-loader for work1.jpg, work2.jpg... up to work20
+        const gallery = document.getElementById('gallery');
+        for (let i = 1; i <= 20; i++) {
+            const img = new Image();
+            const path = `images/work${i}.jpg`;
+            img.src = path;
+            img.onload = () => {
+                const item = document.createElement('div');
+                item.className = "glass rounded-2xl overflow-hidden h-64";
+                item.innerHTML = `<img src="${path}" class="w-full h-full object-cover hover:scale-110 transition duration-700">`;
+                gallery.appendChild(item);
+            };
+        }
+    </script>
+</body>
+</html>
                 const img = new Image();
                 img.src = imgPath;
                 
