@@ -11,66 +11,20 @@
         body { background-color: #020617; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .tech-font { font-family: 'Orbitron', sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Banner Frame with Scanline Animation */
         .banner-frame { position: relative; border-radius: 24px; overflow: hidden; border: 2px solid rgba(59, 130, 246, 0.3); }
+        .banner-frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Charging Animation for Icons */
         .charging-bolt { animation: pulse 1.5s infinite; filter: drop-shadow(0 0 8px #22c55e); }
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } }
-    </style>
-</head>
-<body>
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <img src="images/logo.png" alt="KizzyTech Logo" class="h-14 md:h-20">
-        <div class="hidden md:block glass px-6 py-2 rounded-full text-xs tech-font text-blue-400">Available 24/7</div>
-    </nav>
-
-    <section class="px-6 py-12 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div data-aos="fade-right">
-            <h1 class="tech-font text-4xl md:text-6xl font-extrabold mb-6">You break it, <br><span class="text-blue-500 underline">We fix it.</span></h1>
-            <p class="text-slate-400 text-lg mb-8">Fast repairs in 45 minutes. Professional engineering for your devices.</p>
-            <a href="https://wa.me/2347088150693" class="bg-blue-600 px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20">Get Your Fix Now</a>
-        </div>
-        <div class="banner-frame shadow-2xl" data-aos="zoom-in">
-            <img src="images/banner.jpg" alt="Repair Banner" class="w-full h-full object-cover">
-        </div>
-    </section>
-
-    <section class="py-10 bg-blue-600/10 border-y border-blue-500/20 text-center">
-        <h2 class="tech-font text-xl text-blue-400 flex items-center justify-center gap-4">
-            <span class="charging-bolt">⚡</span> Available to assist you 24/7 <span class="charging-bolt">⚡</span>
-        </h2>
-    </section>
-
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="tech-font text-3xl font-bold mb-12 text-center">Engineering Gallery</h2>
-        <div id="gallery" class="grid grid-cols-2 md:grid-cols-5 gap-4"></div>
-    </section>
-
-    <footer class="py-12 border-t border-slate-900 text-center">
-        <p class="text-slate-500 text-sm mb-4 italic uppercase tracking-widest">Always here to assist you 24/7</p>
-        <div class="tech-font text-xs text-slate-700">© 2026 KizzyTech Phone Engineering</div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-        const gallery = document.getElementById('gallery');
-        async function loadGallery() {
-            for (let i = 1; i <= 15; i++) {
-                const imgPath = `images/work${i}.jpg`;
-                const img = new Image();
-                img.onload = function() {
-                    const card = document.createElement('div');
-                    card.className = "glass rounded-xl overflow-hidden h-48 md:h-64 shadow-xl group";
-                    card.innerHTML = `<img src="${imgPath}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">`;
-                    gallery.appendChild(card);
-                };
-                img.src = imgPath;
-            }
-        }
-        loadGallery();
-    </script>
-</body>
-</html>
-        }
         @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } }
     </style>
 </head>
@@ -79,7 +33,7 @@
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
         <img src="images/logo.png" alt="KizzyTech Logo" class="h-14 md:h-20 drop-shadow-2xl">
         <div class="hidden md:block glass px-6 py-2 rounded-full text-xs tech-font text-blue-400 tracking-widest uppercase">
-            Always here to assist you 24/7
+            Available 24/7 to assist you
         </div>
     </nav>
 
@@ -89,17 +43,18 @@
                 You break it, <br><span class="text-blue-500 underline decoration-green-500">We fix it.</span>
             </h1>
             <p class="text-slate-400 text-lg mb-8 leading-relaxed">
-                Fast, reliable repairs in as little as <span class="text-white font-bold">45 minutes</span>. From cracked screens to water damage, KizzyTech provides professional engineering to get your digital life back on track.
+                Fast, reliable repairs in as little as <span class="text-white font-bold">45 minutes</span>. 
+                Expert engineering for cracked screens, batteries, and charging ports.
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="https://wa.me/2347088150693" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-2xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/20">
-                    Get Your Fix Now
+                <a href="https://wa.me/2347088150693" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-blue-500/20">
+                    Get Emergency Fix
                 </a>
             </div>
         </div>
 
         <div class="banner-frame shadow-2xl" data-aos="zoom-in">
-            <img src="images/banner.jpg" alt="Repair Banner" class="w-full h-full object-cover">
+            <img src="images/banner.jpg" alt="KizzyTech Repair Services" class="w-full h-full object-cover">
         </div>
     </section>
 
@@ -107,7 +62,7 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="tech-font text-xl md:text-2xl text-blue-400 flex items-center justify-center gap-4">
                 <span class="charging-bolt">⚡</span> 
-                Available to our customers 24 hours a day, 7 days a week 
+                Always here to assist you 24/7 
                 <span class="charging-bolt">⚡</span>
             </h2>
         </div>
@@ -116,332 +71,57 @@
     <section class="py-20 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="tech-font text-3xl font-bold mb-4">Engineering Gallery</h2>
-            <p class="text-slate-500">Quality results speak for themselves.</p>
+            <p class="text-slate-500 italic">"The technician you can trust with your digital life."</p>
         </div>
         
-        <div id="gallery" class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4">
             </div>
     </section>
 
     <footer class="py-12 border-t border-slate-900 text-center">
-        <p class="text-slate-500 text-sm mb-4 italic uppercase tracking-widest font-light">
-            Providing expert assistance around the clock
-        </p>
-        <div class="tech-font text-xs text-slate-700">© 2026 KizzyTech Phone Engineering</div>
+        <p class="text-slate-700 text-xs tracking-widest uppercase mb-4">Fast. Reliable. Professional.</p>
+        <div class="tech-font text-xs text-slate-800">© 2026 KizzyTech Phone Engineering</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize Animations
         AOS.init({ duration: 800, once: true });
 
-        // Gallery Loader: Looks for work1.jpg to work15.jpg in your images folder
+        // Gallery Auto-Loader
         const gallery = document.getElementById('gallery');
-        const totalPossibleWorkImages = 15;
+        const maxWorkImages = 15; // Set this to the maximum work images you might upload
 
-        for (let i = 1; i <= totalPossibleWorkImages; i++) {
-            const imgPath = `images/work${i}.jpg`;
-            const img = new Image();
-            img.src = imgPath;
-            img.onload = function() {
-                const card = document.createElement('div');
-                card.className = "glass rounded-xl overflow-hidden h-48 md:h-64 shadow-xl group";
-                card.setAttribute('data-aos', 'fade-up');
-                card.innerHTML = `<img src="${imgPath}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">`;
-                gallery.appendChild(card);
-            };
-        }
-    </script>
-</body>
-</html>
-
-        /* Animation: Charging Pulse */
-        .charging-icon {
-            animation: charge 1.5s ease-in-out infinite;
-        }
-        @keyframes charge {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--main-green)); }
-            50% { transform: scale(1.2); filter: drop-shadow(0 0 15px var(--main-green)); }
-        }
-
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-    </style>
-</head>
-<body>
-
-    <nav class="p-4 flex justify-between items-center max-w-7xl mx-auto">
-        <img src="images/logo.png" alt="KizzyTech Logo" class="h-16 hover:rotate-6 transition-transform">
-        <div class="hidden md:block tech-font text-sm text-blue-400">24/7 Emergency: 070 8815 0693</div>
-    </nav>
-
-    <section class="px-6 py-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div data-aos="fade-right">
-            <h1 class="tech-font text-5xl md:text-7xl font-bold leading-tight">
-                You break it, <br><span class="text-blue-500 underline">We fix it.</span>
-            </h1>
-            <p class="mt-6 text-slate-400 text-lg leading-relaxed">
-                Why buy a new phone when <span class="text-white font-bold">KizzyTech</span> can make your broken device look brand new in 45 minutes? Expert engineering for the modern world.
-            </p>
-            <div class="mt-8 flex gap-4">
-                <a href="https://wa.me/2347088150693" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-bold transition-all transform hover:-translate-y-1">Book a Repair</a>
-            </div>
-        </div>
-        
-        <div data-aos="zoom-in" class="broken-screen shadow-2xl border border-blue-500/20 flex items-end p-8">
-            <div class="glass p-4 rounded-xl w-full">
-                <p class="tech-font text-xs uppercase tracking-widest text-blue-400">Live Status</p>
-                <p class="text-xl font-bold italic">System Restored by KizzyTech</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up">
-            <div class="text-5xl mb-4">⚡</div>
-            <h3 class="tech-font text-xl mb-2">Ultra-Fast</h3>
-            <p class="text-slate-400">Most repairs completed in under 45 minutes while you wait.</p>
-        </div>
-        <div class="glass p-8 rounded-3xl text-center border-green-500/30" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-5xl mb-4 charging-icon">🔋</div>
-            <h3 class="tech-font text-xl mb-2 text-green-400">Expert Care</h3>
-            <p class="text-slate-400">From micro-soldering to screen swaps, we handle it all with precision.</p>
-        </div>
-        <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="text-5xl mb-4">🛠️</div>
-            <h3 class="tech-font text-xl mb-2">Guaranteed</h3>
-            <p class="text-slate-400">We use premium parts that last. If it's not perfect, we haven't finished.</p>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="tech-font text-3xl mb-12 text-center">Engineering <span class="text-blue-500">Masterpieces</span></h2>
-            <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                </div>
-        </div>
-    </section>
-
-    <footer class="p-10 text-center border-t border-slate-800">
-        <p class="text-slate-500 text-sm italic">"The technician you can trust with your digital life."</p>
-        <p class="mt-4 tech-font text-xs tracking-tighter">© 2026 KizzyTech Phone Engineering</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-        
-        // Auto-loader for work1.jpg, work2.jpg... up to work20
-        const gallery = document.getElementById('gallery');
-        for (let i = 1; i <= 20; i++) {
-            const img = new Image();
-            const path = `images/work${i}.jpg`;
-            img.src = path;
-            img.onload = () => {
-                const item = document.createElement('div');
-                item.className = "glass rounded-2xl overflow-hidden h-64";
-                item.innerHTML = `<img src="${path}" class="w-full h-full object-cover hover:scale-110 transition duration-700">`;
-                gallery.appendChild(item);
-            };
-        }
-    </script>
-</body>
-</html>
-                const img = new Image();
-                img.src = imgPath;
-                
-                img.onload = function() {
-                    const div = document.createElement('div');
-                    div.className = "glass overflow-hidden rounded-xl h-48";
-                    div.innerHTML = `<img src="${imgPath}" class="w-full h-full object-cover hover:scale-110 transition duration-500">`;
-                    container.appendChild(div);
-                };
-
-                img.onerror = function() {
-                    // If the image doesn't exist (e.g. work10.jpg isn't uploaded yet), we just stop
-                    return;
-                };
-            }
-        }
-
-        loadImages();
-    </script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
-</body>
-</html>
-            </div>
-
-            <div id="upload-controls" class="hidden">
-                <p class="text-green-400 mb-4 font-medium italic">Logged in as Admin</p>
-                <label class="block mb-2 text-sm text-slate-400">Upload Project Image (Max 10MB)</label>
-                <input type="file" id="fileInput" accept="image/*" class="mb-4 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
-                <button onclick="uploadImage()" id="uploadBtn" class="w-full bg-green-500 p-3 rounded-xl font-bold">Upload to Website</button>
-                <button onclick="logout()" class="mt-4 w-full text-slate-400 text-sm underline">Sign Out</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // 1. INITIALIZE SUPABASE (Replace with your actual keys)
-        const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-        const SUPABASE_KEY = 'YOUR_ANON_KEY';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        // 2. TOGGLE ADMIN PANEL
-        function toggleAdmin() {
-            document.getElementById('admin-panel').classList.toggle('hidden-panel');
-        }
-
-        // 3. LOGIN FUNCTION
-        async function login() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-            if (error) alert(error.message);
-            else {
-                document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('upload-controls').classList.remove('hidden');
-            }
-        }
-
-        // 4. UPLOAD IMAGE (Max 10MB)
-        async function uploadImage() {
-            const file = document.getElementById('fileInput').files;
-            if (!file) return alert("Select a file first!");
-            
-            // Check Size (10MB = 10485760 bytes)
-            if (file.size > 10485760) return alert("File is too large! Max 10MB.");
-
-            const btn = document.getElementById('uploadBtn');
-            btn.innerText = "Uploading...";
-            btn.disabled = true;
-
-            const fileName = `${Date.now()}-${file.name}`;
-            const { data, error } = await supabase.storage.from('gallery').upload(fileName, file);
-
-            if (error) {
-                alert("Upload failed: " + error.message);
-            } else {
-                alert("Image uploaded successfully!");
-                location.reload(); // Refresh to see new image
-            }
-            btn.innerText = "Upload to Website";
-            btn.disabled = false;
-        }
-
-        // 5. FETCH AND DISPLAY IMAGES
         async function loadGallery() {
-            const { data, error } = await supabase.storage.from('gallery').list();
-            const galleryDiv = document.getElementById('image-gallery');
-            
-            if (data && data.length > 0) {
-                galleryDiv.innerHTML = '';
-                data.forEach(item => {
-                    const { data: urlData } = supabase.storage.from('gallery').getPublicUrl(item.name);
-                    galleryDiv.innerHTML += `
-                        <div class="glass overflow-hidden rounded-xl" data-aos="zoom-in">
-                            <img src="${urlData.publicUrl}" class="w-full h-48 object-cover hover:scale-110 transition duration-500">
-                        </div>
-                    `;
-                });
-            } else {
-                galleryDiv.innerHTML = '<p class="col-span-full text-center">No images yet.</p>';
+            for (let i = 1; i <= maxWorkImages; i++) {
+                const imgPath = `images/work${i}.jpg`;
+                const img = new Image();
+                
+                // Only build the card if the image actually exists in your GitHub folder
+                img.onload = function() {
+                    const card = document.createElement('div');
+                    card.className = "glass rounded-xl overflow-hidden h-48 md:h-64 shadow-xl group";
+                    card.setAttribute('data-aos', 'fade-up');
+                    
+                    const actualImg = document.createElement('img');
+                    actualImg.src = imgPath;
+                    actualImg.className = "w-full h-full object-cover transition duration-700 group-hover:scale-110";
+                    
+                    card.appendChild(actualImg);
+                    gallery.appendChild(card);
+                };
+
+                // If images/workX.jpg is missing, it skips it silently
+                img.onerror = function() {
+                    console.log(`Searching for work${i}...`);
+                };
+
+                img.src = imgPath;
             }
         }
 
-        async function logout() {
-            await supabase.auth.signOut();
-            location.reload();
-        }
-
-        // Start
-        AOS.init();
         loadGallery();
     </script>
 </body>
-</html>
-                </div>
-            </div>
-            <div class="relative flex justify-center" data-aos="zoom-in">
-                <div class="floating w-64 h-[500px] bg-slate-800 rounded-[3rem] border-8 border-slate-700 shadow-2xl relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent"></div>
-                    <div class="p-8 mt-20">
-                         <div class="w-full h-1 bg-blue-500 mb-4 rounded"></div>
-                         <div class="w-3/4 h-1 bg-slate-600 mb-8 rounded"></div>
-                         <p class="text-xs text-slate-400">Status: Repairing...</p>
-                         <h3 class="text-xl font-bold mt-2">Kizzy Engineer</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up">
-                <h3 class="text-4xl font-bold text-blue-400">45 Min</h3>
-                <p class="mt-2 text-slate-400">Average Repair Time</p>
-            </div>
-            <div class="glass p-8 rounded-3xl text-center border-blue-500/50" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-4xl font-bold text-green-400">24/7</h3>
-                <p class="mt-2 text-slate-400">Emergency Services</p>
-            </div>
-            <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-4xl font-bold text-blue-400">100%</h3>
-                <p class="mt-2 text-slate-400">Quality Guarantee</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-slate-800/50">
-        <div class="max-w-7xl mx-auto text-center mb-16">
-            <h2 class="text-4xl font-bold">Professional Repair Services</h2>
-        </div>
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="glass p-6 rounded-2xl hover:bg-blue-600 transition duration-500 group" data-aos="flip-left">
-                <div class="text-3xl mb-4">📱</div>
-                <h4 class="text-xl font-bold">Screen Replacement</h4>
-                <p class="mt-2 text-sm text-slate-400 group-hover:text-white">Cracked or bleeding LCD? We'll make it like new.</p>
-            </div>
-            <div class="glass p-6 rounded-2xl hover:bg-blue-600 transition duration-500 group" data-aos="flip-left" data-aos-delay="100">
-                <div class="text-3xl mb-4">🔋</div>
-                <h4 class="text-xl font-bold">Battery Issues</h4>
-                <p class="mt-2 text-sm text-slate-400 group-hover:text-white">Fast-draining battery? We replace them in minutes.</p>
-            </div>
-            <div class="glass p-6 rounded-2xl hover:bg-blue-600 transition duration-500 group" data-aos="flip-left" data-aos-delay="200">
-                <div class="text-3xl mb-4">🔌</div>
-                <h4 class="text-xl font-bold">Charging Ports</h4>
-                <p class="mt-2 text-sm text-slate-400 group-hover:text-white">Loose connection? We fix charging port faults.</p>
-            </div>
-            <div class="glass p-6 rounded-2xl hover:bg-blue-600 transition duration-500 group" data-aos="flip-left" data-aos-delay="300">
-                <div class="text-3xl mb-4">💧</div>
-                <h4 class="text-xl font-bold">Water Damage</h4>
-                <p class="mt-2 text-sm text-slate-400 group-hover:text-white">Dropped in water? Our diagnosis saves your data.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 text-center">
-        <div class="max-w-3xl mx-auto glass p-12 rounded-[3rem]" data-aos="zoom-out">
-            <h2 class="text-4xl font-bold mb-6">Need an Emergency Fix?</h2>
-            <p class="text-xl mb-8 text-slate-300">Call us anytime on our 24/7 hotline</p>
-            <a href="tel:07088150693" class="text-3xl font-extrabold text-blue-400 block mb-8">070 8815 0693</a>
-            <a href="https://wa.me/2347088150693" class="bg-green-500 hover:bg-green-600 px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-green-500/20">Chat on WhatsApp Now</a>
-        </div>
-    </section>
-
-    <footer class="py-10 border-t border-slate-800 text-center text-slate-500 text-sm">
-        <p>&copy; 2024 Kizzy Phone Engineer. Fast. Reliable. Pro.</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
-    </script>
-</body>
-</html>
+                    </html>
+    
